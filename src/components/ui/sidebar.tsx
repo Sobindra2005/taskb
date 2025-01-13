@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoMdPeople, IoMdSettings } from 'react-icons/io';
 import { TbLayoutBoardSplit } from 'react-icons/tb';
-
+import Image from 'next/image';
 const Sidebar = () => {
     return (
         <main className="sidebar mr-2 min-h-screen fixed top-0 left-0  min-w-[14rem] bg-[#023047]  text-[#fb8500] p-2 pt-5 pr-5 border-r border-gray-600">
@@ -12,7 +12,7 @@ const Sidebar = () => {
                 ))}
                 <h1 className='mt-4 text-xl font-semibold '>Your Boards</h1>
                 {[{ name: 'Board 1', image: 'https://picsum.photos/200/300', active: true }, { name: 'Board 2', image: 'https://picsum.photos/200/301', active: false }, { name: 'Board 3', image: 'https://picsum.photos/200/302', active: false }].map((nav, index) => (
-                    <div key={index} className={`flex gap-1 py-2 cursor-pointer ${nav.active === true ? 'bg-gray-700' : ""} hover:bg-gray-700 px-1 items-center`}><img src={nav.image} alt={nav.name} width={25} height={25} className='objec-center object-cover h-6 w-6 ' /> {nav.name}</div>
+                    <div key={index} className={`flex gap-1 py-2 cursor-pointer ${nav.active === true ? 'bg-gray-700' : ""} relative hover:bg-gray-700 px-1 items-center`}><Image src={nav.image} alt={nav.name} width={25} height={25} className='objec-center object-cover h-6 w-6 ' /> {nav.name}</div>
                 ))}
             </div>
 

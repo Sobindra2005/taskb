@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Header from "@/components/ui/header"
 import Card from "@/components/ui/cards/card"
 import { MdPendingActions } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";

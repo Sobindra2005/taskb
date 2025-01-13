@@ -32,7 +32,7 @@ export default function RootLayout({
         <div className="min-w-[14rem]"><Sidebar /></div>
 
         <div className="w-full" >
-          <Header completed={10} notStarted={12} inProgress={12} total={20} />
+          <Header />
           {children}
         </div>
       </body>

@@ -1,16 +1,9 @@
 import React from 'react';
 import { CiSearch, CiStar } from 'react-icons/ci';
-import { FaCheckCircle, FaSpinner, FaRegCircle, FaTasks } from 'react-icons/fa';
 import { IoFilterSharp } from 'react-icons/io5';
 
-interface props {
-    completed: number,
-    inProgress: number,
-    notStarted: number,
-    total: number,
-}
 
-const Header: React.FC<props> = ({ completed, inProgress, notStarted, total }) => {
+const Header= ({ }) => {
     return (
         <header >
             <div className="flex justify-between gap-3 p-4 w-full  items-center text-[#fb8500] bg-[#003049] px-8">

@@ -17,8 +17,7 @@ interface item {
 }
 
 const Card: React.FC<props> = ({ title, icon, items }) => {
-    const [Item, setItem] = useState();
-    const [Active, setActive] = useState<Boolean>();
+    const [Active, setActive] = useState<boolean>();
     return (
         <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 h-fit overflow-auto">
             <div className='min-w-[18rem]'>

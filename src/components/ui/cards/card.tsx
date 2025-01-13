@@ -20,7 +20,7 @@ const Card: React.FC<props> = ({ title, icon, items }) => {
     const [Item, setItem] = useState();
     const [Active, setActive] = useState<Boolean>();
     return (
-        <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 overflow-auto">
+        <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 h-fit overflow-auto">
             <div className='min-w-[18rem]'>
                 <div className='flex items-center justify-between  '>
                     <h2 className="text-xl font-bold mb-2 text-gray-300 capitalize flex items-center  gap-1 ">{title}{icon}</h2>
@@ -38,7 +38,7 @@ const Card: React.FC<props> = ({ title, icon, items }) => {
                     ))}
                 </div>
                 {Active ?
-                    <div className='flex flex-col justify-center gap-2 cursor-pointer  text-gray-300 mt-2 '>
+                    <div className='flex flex-col justify-center gap-2 cursor-pointer  text-gray-300 mt-9 '>
                         <input placeholder='Enter Title' type='text' className='outline-none bg-transparent border p-2 resize-none border-gray-400 focus:border-blue-600' />
                         <textarea rows={3} placeholder='Enter description' className='outline-none bg-transparent border p-2 resize-none border-gray-400 focus:border-blue-600' />
                         <div className='flex items-center gap-3' >

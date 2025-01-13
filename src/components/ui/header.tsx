@@ -1,5 +1,7 @@
 import React from 'react';
+import { CiSearch, CiStar } from 'react-icons/ci';
 import { FaCheckCircle, FaSpinner, FaRegCircle, FaTasks } from 'react-icons/fa';
+import { IoFilterSharp } from 'react-icons/io5';
 
 interface props {
     completed: number,
@@ -11,18 +13,17 @@ interface props {
 const Header: React.FC<props> = ({ completed, inProgress, notStarted, total }) => {
     return (
         <header >
-            <div className="flex gap-3 p-4 w-full justify-between items-center text-[#fb8500] bg-[#003049] rounded-3xl">
-                {[
-                    { label: 'Completed', value: completed, icon: <FaCheckCircle /> },
-                    { label: 'In Progress', value: inProgress, icon: <FaSpinner size={30} /> },
-                    { label: 'Not Started', value: notStarted, icon: <FaRegCircle size={30} /> },
-                    { label: 'Total', value: total, icon: <FaTasks size={30} /> },
-                ].map((item, index) => (
-                    <div key={index} className="flex gap-3 border border-gray-600 rounded-md p-4">
-                        <span>{item.label}: {item.value}</span>
-                        {item.icon}
+            <div className="flex justify-between gap-3 p-4 w-full  items-center text-[#fb8500] bg-[#003049] px-8">
+                <div className='flex items-center gap-2 '>
+                    <h1 className='font-bold text-xl '>Board Name</h1>
+                    <CiStar className="text-2xl cursor-pointer " />
+                </div>
+                <div className='flex justify-center items-center gap-3 '>
+                    <CiSearch size={23} className='cursor-pointer  hover:text-[#7c572d]' />
+                    <div className='  flex items-center justify-center p-2 gap-1 rounded-xl cursor-pointer hover:text-[#7c572d]'>
+                        <IoFilterSharp size={23} className='cursor-pointer  ' /><span className=' text-lg  '>filter </span>
                     </div>
-                ))}
+                </div>
             </div>
         </header>
     );

@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased p-2 flex `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiase  flex `}
       >
         <div className="min-w-[14rem]"><Sidebar /></div>
 

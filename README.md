@@ -28,11 +28,11 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ##  Technology choices and rationale
 ##### Next.js: We chose it for server-side rendering (SSR) and automatic optimizations, helping with performance and SEO. It also makes routing and development super easy.
-##### React DnD Kit: This was a no-brainer for drag-and-drop features—it's fast, flexible, and integrates smoothly with React.
+##### React DnD Kit: Got to know that React beautiful dnd is deprecated. also, this was a no-brainer for drag-and-drop features—it's fast, flexible, and integrates smoothly with React.
 ##### React Icons: For icons, React Icons gives us a huge selection with minimal impact on performance, plus it’s simple to use.
 ##### Lucide React: We love Lucide’s high-quality SVG icons, which are easy to customize and look great across all screens.
 ##### TypeScript: TypeScript helps us catch bugs early, offers better code completion, and makes it easier to scale the project.
-##### Tailwind CSS: Tailwind's utility-first approach makes styling quick and easy. Plus, it’s super responsive and customizable.
+##### Tailwind CSS: Tailwind's utility-first approach makes styling quick and easy.
 
 
 ## Known Limitations and Trade-offs

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { BsThreeDots } from 'react-icons/bs';
 import { IoAddOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
-import { horizontalListSortingStrategy, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import {  SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import Task from './task';
 import { useDroppable } from '@dnd-kit/core';
 import { ColumnType } from '@/Types/types';

@@ -1,5 +1,4 @@
 "use client"
-import dynamic from 'next/dynamic';
 import { useSortable } from '@dnd-kit/sortable';
 import React from 'react';
 import { CSS } from '@dnd-kit/utilities';

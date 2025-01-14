@@ -8,6 +8,7 @@ import { TaskType } from "@/Types/types";
 import Task from "@/components/ui/cards/task";
 
 
+
 export default function Home() {
   const [columns, setColumns] = useState(tasks);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);

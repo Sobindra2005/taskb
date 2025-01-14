@@ -8,11 +8,10 @@ import { TaskType } from "@/Types/types";
 import Task from "@/components/ui/cards/task";
 
 
-
 export default function Home() {
   const [columns, setColumns] = useState(tasks);
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
-  console.log(activeTask)
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -33,12 +32,9 @@ export default function Home() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-
     if (!over) return;
-
     const activeId = active.id;
     const overId = over.id;
-  
     const activeColIndex = columns.findIndex((col) =>
       col.tasks.some((task) => task.id === activeId)
     );
@@ -90,6 +86,7 @@ export default function Home() {
   return (
     <main className="p-4  flex  justify-center mt-5 gap-8">
       <DndContext
+      data-testid="dnd-context"
         sensors={sensors}
         collisionDetection={closestCorners}
         onDragStart={handleDragStart}
@@ -97,12 +94,12 @@ export default function Home() {
       >
         {
           columns.map((column, index) => {
-            return <div key={index}><Card items={column} /></div>
+            return <div key={index}><Card data-testid="column" items={column} /></div>
           })
         }
 
         <DragOverlay>
-          {activeTask ? <Task task={activeTask} /> : null}
+          {activeTask ? <Task data-testid="task-item" task={activeTask} /> : null}
         </DragOverlay>
       </DndContext>
 

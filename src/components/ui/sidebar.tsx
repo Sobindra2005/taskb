@@ -4,7 +4,7 @@ import { TbLayoutBoardSplit } from 'react-icons/tb';
 import Image from 'next/image';
 const Sidebar = () => {
     return (
-        <main className="sidebar mr-2 min-h-screen fixed top-0 left-0  min-w-[14rem] bg-[#023047]  text-[#fb8500] p-2 pt-5 pr-5 border-r border-gray-600">
+        <main className="sidebar mr-2 min-h-screen fixed top-0 left-0  min-w-[14rem] bg-[#023047]  text-[#fb8500] p-2 pt-5 pr-5 border-r border-gray-600 capitalize">
             <h1 className='text-3xl font-bold border-b border-yellow-700 text-[#ffb703]'>Kanban <span className='text-purple-500'>Board</span>  </h1>
             <div className='mt-10 text-gray-400  '>
                 {[{ name: 'Boards', icon: <TbLayoutBoardSplit size={25} /> }, { name: 'members', icon: <IoMdPeople size={25} /> }, { name: 'Cards', icon: <IoMdSettings size={25} /> }].map((nav, index) => (

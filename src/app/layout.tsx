@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/ui/sidebar";
 import Header from "@/components/ui/header";
-import { DNDwrapper } from "@/lib/dndwrapper"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,9 +33,9 @@ export default function RootLayout({
 
         <div className="w-full" >
           <Header />
-          <DNDwrapper>
-            {children}
-          </DNDwrapper>
+
+          {children}
+
         </div>
       </body>
     </html>

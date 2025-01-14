@@ -6,33 +6,30 @@ import { IoAddOutline } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import { horizontalListSortingStrategy, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import Task from './task';
+import { useDroppable } from '@dnd-kit/core';
+import { ColumnType } from '@/Types/types';
 
-interface Props {
-    title: string,
-    icon: ReactNode,
-    items: Item[],
+interface props {
+    items: ColumnType;
 }
 
-interface Item {
-    id: number,
-    title: string,
-    smallDescription: string,
-}
-
-const Card: React.FC<Props> = ({ title, icon, items }) => {
+const Card: React.FC<props> = ({ items }) => {
+    const { setNodeRef } = useDroppable({
+        id: items.id,
+    });
     const [active, setActive] = useState<boolean>(false);
     return (
-        <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 h-fit">
+        <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 min-h-[20rem] ">
             <div className='min-w-[18rem]'>
                 <div className='flex items-center justify-between'>
-                    <h2 className="text-xl font-bold mb-2 text-gray-300 capitalize flex items-center gap-1">{title}{icon}</h2>
+                    <h2 className="text-xl font-bold mb-2 text-gray-300 capitalize flex items-center gap-1">{items.title}</h2>
                     <BsThreeDots className='cursor-pointer rounded-full hover:bg-gray-600 p-1 w-7 h-7' />
                 </div>
 
-                <div className='flex flex-col gap-4'>
-                    <SortableContext items={items} strategy={verticalListSortingStrategy } > 
-                        {items.map((item) => (
-                            <Task key={item.id} id={item.id} title={item.title} description={item.smallDescription} />
+                <div ref={setNodeRef} className='flex flex-col gap-4'>
+                    <SortableContext items={items.tasks.map((task) => task.id)} strategy={verticalListSortingStrategy} >
+                        {items.tasks.map((item,index) => (
+                            <div key={ index} >  <Task task={item} /></div>
                         ))}
                     </SortableContext>
                 </div>

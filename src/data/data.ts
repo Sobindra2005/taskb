@@ -1,68 +1,25 @@
-export const TODO = [
-  {
-    id: 1,
-    title: "Buy groceries",
-    smallDescription: "Purchase milk, eggs, bread, and fruits from the store.",
-  },
-  {
-    id: 2,
-    title: "Prepare project proposal",
-    smallDescription: "Draft the initial proposal for the Arise project by Friday.",
-  }
-]
-
-export const Pending = [{
-  id: 3,
-  title: "Team meeting",
-  smallDescription: "Discuss milestones and deliverables with the team.",
-},
-{
-  id: 4,
-  title: "Fix app UI bugs",
-  smallDescription: "Resolve button alignment issues on the settings screen.",
-}]
-
-export const Done = [{
-  id: 5,
-  title: "Submit internship application",
-  smallDescription: "Sent application for React internship at Moru.",
-},
-{
-  id: 6,
-  title: "Setup development environment",
-  smallDescription: "Installed Node.js, VS Code, and dependencies for the project.",
-}
-]
 
 export const tasks = [
   {
-    id: 1,
-    title: "Buy groceries",
-    smallDescription: "Purchase milk, eggs, bread, and fruits from the store.",
+    id: 'todo',
+    title: 'To Do',
+    tasks: [
+      { id: '1', title: 'Learn React', description: 'Complete the ReactJS tutorial and understand the basics of components and hooks.' },
+      { id: '2', title: 'Build a project', description: 'Create a simple React application to practice the concepts learned.' },
+    ],
   },
   {
-    id: 2,
-    title: "Prepare project proposal",
-    smallDescription: "Draft the initial proposal for the Arise project by Friday.",
+    id: 'in-progress',
+    title: 'In Progress',
+    tasks: [
+      { id: '3', title: 'Study TypeScript', description: 'Learn TypeScript fundamentals and its integration with React.' },
+    ],
   },
   {
-    id: 3,
-    title: "Team meeting",
-    smallDescription: "Discuss milestones and deliverables with the team.",
+    id: 'done',
+    title: 'Done',
+    tasks: [
+      { id: '4', title: 'Setup development environment', description: 'Install Node.js, VS Code, and other necessary tools for development.' },
+    ],
   },
-  {
-    id: 4,
-    title: "Fix app UI bugs",
-    smallDescription: "Resolve button alignment issues on the settings screen.",
-  },
-  {
-    id: 5,
-    title: "Submit internship application",
-    smallDescription: "Sent application for React internship at Moru.",
-  },
-  {
-    id: 6,
-    title: "Setup development environment",
-    smallDescription: "Installed Node.js, VS Code, and dependencies for the project.",
-  }
-]
+];

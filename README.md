@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Kanban Board 
 
 ## Getting Started
 
@@ -18,19 +19,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Features 
 
-To learn more about Next.js, take a look at the following resources:
+1.draggable component
+2.able to create and delete columns 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Known Limitations and Trade-offs
+1.facing some issue when trying to drag task from one card to another. It dropping but the whole task are transfered to the targeted card.
+2.Average UI 
+3.isn't Mobile responsive 
+4.Performance issue on Large Data Sets
+5.Limited Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Improvements
 
-## Deploy on Vercel
+1. Device responsive
+2. Better User Interface
+3. caching and memoizing
+4. infinite scrolling
+5. Lazy Loading
+6. Theming Options
+7. Better Performance
+8. Customizable Settings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

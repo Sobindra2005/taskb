@@ -11,13 +11,21 @@ import AddItem from "@/components/shared/button"
 
 interface props {
     items: ColumnType;
+    addTask: (categoryId: string, title: string, description: string) => void;
+    deleteTask: (categoryId: string, taskId: string) => void;
 }
 
-const Card: React.FC<props> = ({ items }) => {
+const Card: React.FC<props> = ({ items, addTask, deleteTask }) => {
     const { setNodeRef } = useDroppable({
         id: items.id,
     });
+
     const [active, setActive] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>('')
+    const [description, setdescription] = useState<string>('')
+
+
+
     return (
         <div className="card bg-gray-700 shadow-md rounded-lg p-4 mb-4 min-h-[20rem] ">
             <div className='min-w-[18rem]'>
@@ -27,14 +35,20 @@ const Card: React.FC<props> = ({ items }) => {
                 </div>
 
                 <div ref={setNodeRef} className='flex flex-col gap-4'>
-                    <SortableContext items={items.tasks.map((task) => task.id)} strategy={verticalListSortingStrategy} >
+                    <SortableContext items={items.tasks.map((task) => task.id)} strategy={verticalListSortingStrategy}>
                         {items.tasks.map((item, index) => (
-                            <div key={index} >  <Task task={item} /></div>
+                            <div key={index}>
+                                <Task
+                                    task={item}
+                                    onClick={() => deleteTask(items.id, item.id)}
+                                />
+                            </div>
                         ))}
                     </SortableContext>
+
                 </div>
                 {active ? (
-                    <AddTask onCancelClick={ ()=>setActive(false)} onSubmitClick={ ()=> alert ("submitted ")} />
+                    <AddTask title={title} setTitle={setTitle} description={description} setdescription={setdescription} onCancelClick={() => setActive(false)} onSubmitClick={() => addTask(items.id, title, description)} />
                 ) : (
                     <AddItem onClick={() => setActive(true)} />
                 )}

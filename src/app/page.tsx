@@ -6,7 +6,9 @@ import { closestCorners, DndContext, DragEndEvent, DragOverlay, DragStartEvent, 
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { ColumnType, TaskType } from "@/Types/types";
 import Task from "@/components/ui/cards/task";
-
+import { Loading } from "@/components/shared/loading"
+import Header from "@/components/ui/header";
+import Dropdown from "@/components/shared/dropdown"
 
 export default function Home() {
 
@@ -17,15 +19,14 @@ export default function Home() {
         return storedData ? JSON.parse(storedData) : tasks;
       } catch (error) {
         console.error("Error parsing localStorage data:", error);
-        return tasks; 
+        return tasks;
       }
     }
-    return tasks; 
+
   });
-  
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
-
-
+  const [filterBy, setFilterby] = useState("All")
+  const [isActive,setisActive]=useState(false)
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -142,8 +143,12 @@ export default function Home() {
   }, [columns]);
   useMemo(() => columns, [columns]);
 
-  return (
+  if (!columns) return <Loading />
+
+  return (<>
+    <Header setisActive={setisActive} isActive={isActive} />
     <main className="p-4  flex  justify-center mt-5 gap-8">
+      {isActive && <Dropdown tasks={columns} setFilterby={setFilterby} />}
       <DndContext
         data-testid="dnd-context"
         sensors={sensors}
@@ -152,15 +157,29 @@ export default function Home() {
         onDragEnd={handleDragEnd}
       >
         {
-          columns.map((column, index) => {
-            return <div key={index}><Card data-testid="column" items={column} addTask={addTask} deleteTask={deleteTask} /></div>
-          })
+          columns
+            .filter((column) => {
+              if (filterBy === "All") return true;
+              return column.title.toLowerCase() === filterBy.toLowerCase();
+            })
+            .map((column, index) => {
+              return (
+                <div key={index}>
+                  <Card
+                    data-testid="column"
+                    items={column}
+                    addTask={addTask}
+                    deleteTask={deleteTask}
+                  />
+                </div>
+              );
+            })
         }
-
         <DragOverlay>
           {activeTask ? <Task onClick={() => console.log('button is clicked ')} data-testid="task-item" task={activeTask} /> : null}
         </DragOverlay>
       </DndContext>
     </main>
+  </>
   );
 }

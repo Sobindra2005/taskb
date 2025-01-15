@@ -35,15 +35,15 @@ export default function Home() {
   const redo = () => {
     if (redoStack.length === 0) return;
     const nextState = redoStack.pop();
-    setHistory((prev) => [...prev, columns]); 
-    setColumns(nextState!); 
+    setHistory((prev) => [...prev, columns]);
+    setColumns(nextState!);
   };
 
   const undo = () => {
     if (history.length === 0) return;
     const previousState = history.pop();
-    setRedoStack((prev) => [...prev, columns]); 
-    setColumns(previousState!); 
+    setRedoStack((prev) => [...prev, columns]);
+    setColumns(previousState!);
   };
 
   const sensors = useSensors(
@@ -86,6 +86,8 @@ export default function Home() {
     const overColIndex = columns.findIndex((col) =>
       col.id === over.id || col.tasks.some((task) => task.id === over.id)
     );
+    setHistory((prev) => [...prev, columns]);
+    setRedoStack([]);
     if (activeColIndex !== -1 && overColIndex !== -1) {
       setColumns((columns) => {
         const activeCol = columns[activeColIndex];

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CancelButton, SubmitButton } from '../shared/button';
 
 interface props {

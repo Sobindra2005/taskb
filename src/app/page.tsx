@@ -1,5 +1,5 @@
 "use client"
-import Card from "@/components/ui/cards/card"
+import Card from "@/components/ui/cards/card";
 import { tasks } from "@/data/data";
 import { useState } from "react";
 import { closestCorners, DndContext, DragEndEvent, DragOverlay, DragStartEvent, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
@@ -21,6 +21,10 @@ export default function Home() {
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
+    if (!active.id) {
+        console.warn("Drag started with undefined ID");
+        return;
+    }
     const task = columns
       .flatMap((col) => col.tasks)
       .find((task) => task.id === active.id);
@@ -33,14 +37,22 @@ export default function Home() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) return;
-    const activeId = active.id;
-    const overId = over.id;
+    if (!active.id) {
+        console.warn("Drag ended with undefined active ID");
+        return;
+    }
+
+    if (!over.id) {
+        console.warn("Drag ended with undefined over ID");
+        return;
+    }
+
     const activeColIndex = columns.findIndex((col) =>
-      col.tasks.some((task) => task.id === activeId)
+      col.tasks.some((task) => task.id === active.id)
     );
     console.log("this is active ", activeColIndex);
     const overColIndex = columns.findIndex((col) =>
-      col.id === overId || col.tasks.some((task) => task.id === overId)
+      col.id === over.id || col.tasks.some((task) => task.id === over.id)
     );
     console.log("this is over ", overColIndex);
     if (activeColIndex !== -1 && overColIndex !== -1) {
@@ -48,11 +60,14 @@ export default function Home() {
         const activeCol = columns[activeColIndex];
         const overCol = columns[overColIndex];
         const activeTaskIndex = activeCol.tasks.findIndex(
-          (task) => task.id === activeId
+          (task) => task.id === active.id
         );
+        console.log("active taskIndex", activeTaskIndex)
         const overTaskIndex = overCol.tasks.findIndex(
-          (task) => task.id === overId
+          (task) => task.id === over.id
         );
+
+        console.log("overTaskIndex", overTaskIndex)
 
         if (activeColIndex === overColIndex) {
           const newTasks = arrayMove(
@@ -70,7 +85,7 @@ export default function Home() {
         } else {
           const newColumns = [...columns];
           const [movedTask] = activeCol.tasks.splice(activeTaskIndex, 1);
-          if (overCol.id === overId) {
+          if (overCol.id === over.id) {
             overCol.tasks.push(movedTask);
           } else {
             overCol.tasks.splice(overTaskIndex, 0, movedTask);
@@ -102,8 +117,6 @@ export default function Home() {
           {activeTask ? <Task data-testid="task-item" task={activeTask} /> : null}
         </DragOverlay>
       </DndContext>
-
-
     </main>
   );
 }

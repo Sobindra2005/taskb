@@ -8,7 +8,6 @@ describe('AddTask Component', () => {
     
     const titleInput = screen.getByPlaceholderText(/enter title/i);
     const descriptionInput = screen.getByPlaceholderText(/enter description/i);
-    const submitButton = screen.getByRole('button', { name: /add task/i });
 
     expect(titleInput).toBeInTheDocument();
     expect(descriptionInput).toBeInTheDocument();

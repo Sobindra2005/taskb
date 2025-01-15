@@ -9,6 +9,7 @@ import Task from "@/components/ui/cards/task";
 import { Loading } from "@/components/shared/loading"
 import Header from "@/components/ui/header";
 import Dropdown from "@/components/shared/dropdown"
+import { FaRedo, FaUndo } from "react-icons/fa";
 
 export default function Home() {
 
@@ -26,7 +27,24 @@ export default function Home() {
   });
   const [activeTask, setActiveTask] = useState<TaskType | null>(null);
   const [filterBy, setFilterby] = useState("All")
-  const [isActive,setisActive]=useState(false)
+  const [isActive, setisActive] = useState(false)
+  const [history, setHistory] = useState<ColumnType[][]>([]);
+  const [redoStack, setRedoStack] = useState<ColumnType[][]>([]);
+
+
+  const redo = () => {
+    if (redoStack.length === 0) return;
+    const nextState = redoStack.pop();
+    setHistory((prev) => [...prev, columns]); 
+    setColumns(nextState!); 
+  };
+
+  const undo = () => {
+    if (history.length === 0) return;
+    const previousState = history.pop();
+    setRedoStack((prev) => [...prev, columns]); 
+    setColumns(previousState!); 
+  };
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -108,6 +126,8 @@ export default function Home() {
 
 
   const addTask = (categoryId: string, title: string, description: string) => {
+    setHistory((prev) => [...prev, columns]);
+    setRedoStack([]);
     setColumns((prevTasks) =>
       prevTasks.map((category: ColumnType) =>
         category.id === categoryId
@@ -124,6 +144,8 @@ export default function Home() {
   };
 
   const deleteTask = (categoryId: string, taskId: string) => {
+    setHistory((prev) => [...prev, columns]);
+    setRedoStack([]);
     setColumns((prevTasks) =>
       prevTasks.map((category: ColumnType) =>
         category.id === categoryId
@@ -147,7 +169,11 @@ export default function Home() {
 
   return (<>
     <Header setisActive={setisActive} isActive={isActive} />
-    <main className="p-4  flex  justify-center mt-5 gap-8">
+    <main className="p-4  flex  justify-center mt-5 gap-8 relative">
+      <div className="fixed bottom-5 left-[16rem] flex  gap-5 text-2xl p-2 bg-gray-700 ">
+        <button onClick={undo} disabled={history.length === 0} className="flex flex-row-reverse items-center gap-2 hover:text-gray-400 ">Undo<FaUndo size={22} /></button>
+        <button onClick={redo} disabled={history.length === 0} className="flex flex-row-reverse items-center gap-2 hover:text-gray-400 ">Redo <FaRedo size={22} /></button>
+      </div>
       {isActive && <Dropdown tasks={columns} setFilterby={setFilterby} />}
       <DndContext
         data-testid="dnd-context"

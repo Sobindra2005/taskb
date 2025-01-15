@@ -48,7 +48,7 @@ const Card: React.FC<props> = ({ items, addTask, deleteTask }) => {
 
                 </div>
                 {active ? (
-                    <AddTask title={title} setTitle={setTitle} description={description} setdescription={setdescription} onCancelClick={() => setActive(false)} onSubmitClick={() => addTask(items.id, title, description)} />
+                    <AddTask title={title} setTitle={setTitle} description={description} setdescription={setdescription} onCancelClick={() => setActive(false)} onSubmitClick={() => { setTitle(''); setdescription(''); addTask(items.id, title, description) }} />
                 ) : (
                     <AddItem onClick={() => setActive(true)} />
                 )}

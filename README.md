@@ -22,8 +22,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## Features 
 
-#### 1.draggable component
-#### 2.able to create and delete columns 
+#### 1.draggable Task
+#### 2. smooth animations for card movement
+#### 3.keyboard accessibility for for sorting
+#### 4.TypeScript with strict mode enabled
+#### 5.Include unit and integration tests
+#### 6.drag-and-drop functionality using dnd-kit
+
 
 
 ##  Technology choices and rationale

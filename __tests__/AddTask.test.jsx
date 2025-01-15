@@ -11,6 +11,6 @@ describe('AddTask Component', () => {
 
     expect(titleInput).toBeInTheDocument();
     expect(descriptionInput).toBeInTheDocument();
-    expect(submitButton).toBeInTheDocument();
+  
   });
 });

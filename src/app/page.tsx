@@ -54,6 +54,7 @@ export default function Home() {
   );
 
   const handleDragStart = (event: DragStartEvent) => {
+
     const { active } = event;
     if (!active.id) {
       console.warn("Drag started with undefined ID");
@@ -86,9 +87,10 @@ export default function Home() {
     const overColIndex = columns.findIndex((col) =>
       col.id === over.id || col.tasks.some((task) => task.id === over.id)
     );
-    setHistory((prev) => [...prev, columns]);
-    setRedoStack([]);
+
     if (activeColIndex !== -1 && overColIndex !== -1) {
+      setHistory((prev) => [...prev, columns]);
+      setRedoStack([]);
       setColumns((columns) => {
         const activeCol = columns[activeColIndex];
         const overCol = columns[overColIndex];

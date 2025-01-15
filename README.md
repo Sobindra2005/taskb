@@ -28,7 +28,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 #### 4.TypeScript with strict mode enabled
 #### 5.Include unit and integration tests
 #### 6.drag-and-drop functionality using dnd-kit
-
+#### 7.Saved progress
+#### 8.undo redo 
+#### 9. filtering cards with card name 
+#### 10. create and delete task 
 
 
 ##  Technology choices and rationale
